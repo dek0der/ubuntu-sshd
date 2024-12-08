@@ -50,14 +50,13 @@ RUN apt-get update \
         tmux
 RUN apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
-    && mkdir -p /disk \
     && mkdir -p /run/sshd \
     && chmod 755 /run/sshd \
     && if ! id -u "$SSH_USERNAME" > /dev/null 2>&1; then useradd -ms /bin/bash "$SSH_USERNAME"; fi \
-    && chown -R "$SSH_USERNAME":"$SSH_USERNAME" /disk/"$SSH_USERNAME" \
-    && chmod 755 /disk/"$SSH_USERNAME" \
-    && mkdir -p /disk/"$SSH_USERNAME"/.ssh \
-    && chown "$SSH_USERNAME":"$SSH_USERNAME" /disk/"$SSH_USERNAME"/.ssh \
+    && chown -R "$SSH_USERNAME":"$SSH_USERNAME" /home/"$SSH_USERNAME" \
+    && chmod 755 /home/"$SSH_USERNAME" \
+    && mkdir -p /home/"$SSH_USERNAME"/.ssh \
+    && chown "$SSH_USERNAME":"$SSH_USERNAME" /home/"$SSH_USERNAME"/.ssh \
     && echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config \
     && echo "PermitRootLogin no" >> /etc/ssh/sshd_config
 
