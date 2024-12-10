@@ -2,7 +2,7 @@
 
 # Set default values for SSH_USERNAME and SSH_PASSWORD if not provided
 : ${SSH_USERNAME:=ubuntu}
-: ${SSH_PASSWORD:?"Error: SSH_PASSWORD environment variable is not set."}
+: ${SSH_PASSWORD:=ubuntu}
 : ${SSHD_CONFIG_ADDITIONAL:=""}
 
 # Create the user with the provided username and set the password
