@@ -48,6 +48,7 @@ RUN apt-get update \
         python3-pip \
         htop \
         tmux \
+        nano \
         sudo
 RUN apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
